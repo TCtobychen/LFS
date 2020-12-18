@@ -59,5 +59,5 @@ The test.sh runs two subtests, one is the **basics.sh** and the other is **advan
 
 This **basics.sh** tests the `mkdir`; `touch`; `read` & `write` and some normal errors, like newing a folder with an existing name and opening a deleted file. 
 
-The **advanced.sh** tests the `chmod`; `chown`; link and unlink operations.
+The **advanced.sh** tests the `chmod`;
 
