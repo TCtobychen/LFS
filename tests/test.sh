@@ -1,4 +1,6 @@
 chmod u+x basics.sh
-chmod u+x advanced.sh
+chmod u+x chmod.sh
+chmod u+x links.sh
 ./basics.sh
-./advanced.sh
+./chmod.sh
+./links.sh

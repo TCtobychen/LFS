@@ -7,7 +7,7 @@
 #ifndef INODE_H
 #define INODE_H
 
-#include "LFS.h"
+#include "lfs.h"
 
 /**
  * record uid, gid, mode, size, number of data blocks, number of links, data blocks' address
@@ -20,13 +20,22 @@ struct Inode {
 	off_t size;
 	int numBLK;
 	nlink_t nLink;
-	long direct[MAX_FILE_SIZE_INBLK];
+	long inodeAddrTable[MAX_FILE_SIZE_INBLK];
 };
 
 /**
  * create set attributes of a new inode   
  */
-void newInode(struct Inode *buf, uid_t uid, uid_t gid, mode_t mode,
-			 size_t size, nlink_t nLink, int nBLK, long *addr);
+void newInode(struct Inode *buf, uid_t uid, uid_t gid, mode_t mode, 
+			 size_t size, nlink_t nLink, int nBLK, long *addr){
+	buf->uid = uid;
+	buf->gid = gid;
+	buf->mode = mode;
+	buf->size = size;
+	buf->nLink = nLink;
+	buf->numBLK = nBLK;
+	for (int i = 0; i<nBLK; i++)
+		buf->inodeAddrTable[i] = *(addr+i);
+}
 
 #endif
